@@ -6,7 +6,6 @@ $.simpleWeather({
       $('#primary .image img').attr( 'src', weather.image  );
       $('#primary .city').text(weather.city);
       $('#primary .temp').text(weather.temp);
-      $('#primary .time').text(weather.updated);
 
     }, 
     error: function(error) {
@@ -16,13 +15,12 @@ $.simpleWeather({
 
 //  Secondary
 $.simpleWeather({
-  location: 'Rainier, WA',
+  location: 'Honolulu, Hi',
   success: function(weather) {
      
     $('#secondary .image img').attr( 'src', weather.image  );
     $('#secondary .city').text(weather.city);
     $('#secondary .temp').text(weather.temp);
-    $('#secondary .time').text(weather.updated);
 
   }, 
   error: function(error) {
@@ -54,37 +52,38 @@ $('button').click( function(){
    
    console.log(lat, long);
    
-   // Get Weather
+   // Call Get Weather Function
    getWeather( lat + ',' + long );
     
   });
 });
 
 
-// Define Get Weather
+// Define Get Weather Function
 var getWeather = function( location ) {
 
-console.log(location);
+  console.log(location);
 
-$.simpleWeather({
- location: location,
- unit: 'f',
- success: function(weather) {
-   
-   // Entire weather object
-   // console.log(weather);
-   
-   // Display Data
-   $('#geolocation .image img').attr( 'src', weather.image  );
-   $('#geolocation .city').text(weather.city);
-   $('#geolocation .temp').text(weather.temp);
-   $('#geolocation .time').text(weather.updated);
+  $.simpleWeather({
 
- },
- error: function(error) {
-   // Show if weather cannot be retreived
-   console.log('Look Outside.');
- }
+    location: location,
+    unit: 'f',
+    success: function(weather) {
+      
+      // Entire weather object
+      // console.log(weather);
+      
+      // Display Data
+      $('#geolocation .image img').attr( 'src', weather.image  );
+      $('#geolocation .city').text(weather.city);
+      $('#geolocation .temp').text(weather.temp);
 
-});
+    },
+    error: function(error) {
+      // Show if weather cannot be retreived
+      console.log('Look Outside.');
+    }
+
+  });
+
 };
