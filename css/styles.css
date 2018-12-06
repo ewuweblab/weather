@@ -1,0 +1,6 @@
+/* Weather Listings */
+
+/* Remove bullet on first list item */
+ul li:first-child  {
+    list-style: none;
+}
